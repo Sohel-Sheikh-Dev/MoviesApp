@@ -23,7 +23,7 @@
         <!--            android:orientation="vertical">-->
 
         <ImageView
-            android:id="@+id/movieImg"
+            android:id="@+id/movieImgPop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -72,7 +72,7 @@
 
 
             <RatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/ratingBarPop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

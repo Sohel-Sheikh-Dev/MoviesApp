@@ -9,21 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moviesapp.R;
 
-public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-    ImageView imageView;
-    RatingBar ratingBar;
-
+public class Popular_View_Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     OnMovieListener onMovieListener;
+    ImageView imageView22;
+    RatingBar ratingBar22;
 
-    public MovieViewHolder(@NonNull View itemView, OnMovieListener onMovieListener) {
+    public Popular_View_Holder(@NonNull View itemView,OnMovieListener onMovieListener) {
         super(itemView);
 
         this.onMovieListener = onMovieListener;
-
-        imageView = itemView.findViewById(R.id.movieImg);
-        ratingBar = itemView.findViewById(R.id.ratingBar);
+        imageView22 = itemView.findViewById(R.id.movieImgPop);
+        ratingBar22 = itemView.findViewById(R.id.ratingBarPop);
 
         itemView.setOnClickListener(this);
 
@@ -31,8 +28,6 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     @Override
     public void onClick(View v) {
-
-        onMovieListener.onMovieClick(getAdapterPosition());
 
     }
 }

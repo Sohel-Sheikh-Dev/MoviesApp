@@ -1,5 +1,6 @@
 package com.example.moviesapp.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.moviesapp.R;
+import com.example.moviesapp.databinding.PopularMoviesLayoutBinding;
 import com.example.moviesapp.model.MovieModel;
+import com.example.moviesapp.utilities.Credentials;
 
 import java.util.List;
 
 public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<MovieModel> mMovie;
+    public static List<MovieModel> mMovie;
     private OnMovieListener onMovieListener;
+
+    private static final int DISPLAY_POP = 1;
+    private static final int DISPLAY_SEARCH = 1;
 
     public MovieRecyclerView(OnMovieListener onMovieListener) {
         this.onMovieListener = onMovieListener;
@@ -25,17 +31,28 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_list_item, parent, false);
-        return new MovieViewHolder(view, onMovieListener);
+        View view = null;
+        if(viewType == DISPLAY_SEARCH){
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_list_item, parent, false);
+            return new MovieViewHolder(view,onMovieListener);
+        }else{
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_movies_layout, parent, false);
+            return new Popular_View_Holder(view,onMovieListener);
+        }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((MovieViewHolder) holder).title.setText(mMovie.get(position).getTitle());
-        ((MovieViewHolder) holder).releaseDate.setText(mMovie.get(position).getRelease_date());
-        ((MovieViewHolder) holder).duration.setText(mMovie.get(position).getOriginal_language());
-        ((MovieViewHolder) holder).ratingBar.setRating((mMovie.get(position).getVote_average()) / 2);//HEre I have set the rating but
-        Glide.with(holder.itemView.getContext()).load("https://image.tmdb.org/t/p/w500/"+mMovie.get(position).getPoster_path()).into(((MovieViewHolder) holder).imageView);
+
+        int itemViewType = getItemViewType(position);
+        if(itemViewType == DISPLAY_SEARCH){
+            ((MovieViewHolder) holder).ratingBar.setRating((mMovie.get(position).getVote_average()) / 2);
+            Log.v("Tag","Rating: "+mMovie.get(position).getVote_average() / 2);
+            Glide.with(holder.itemView.getContext()).load("https://image.tmdb.org/t/p/w500/"+mMovie.get(position).getPoster_path()).into(((MovieViewHolder) holder).imageView);
+        }else{
+            ((Popular_View_Holder) holder).ratingBar22.setRating((mMovie.get(position).getVote_average()) / 2);
+            Glide.with(holder.itemView.getContext()).load("https://image.tmdb.org/t/p/w500/"+mMovie.get(position).getPoster_path()).into(((Popular_View_Holder) holder).imageView22);
+        }
 
     }
 
@@ -62,4 +79,13 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         return null;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if(Credentials.POPULAR){
+            return DISPLAY_POP;
+        }else{
+            return DISPLAY_SEARCH;
+        }
+
+    }
 }

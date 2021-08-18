@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/drawable/shadow_back.xml" value="0.1425925925925926" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/drawable/shadow_black.xml" value="0.1425925925925926" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/activity_movie_details.xml" value="0.22" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/movie_list_item.xml" value="0.2046875" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/popular_movies_layout.xml" value="0.18194444444444444" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/layout/shadow_back.xml" value="0.18194444444444444" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/MoviesApp/app/src/main/res/xml/network_security_config.xml" value="0.2046875" />
       </map>
